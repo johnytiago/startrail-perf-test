@@ -1,0 +1,59 @@
+{
+  "name": "startrail-perf-test",
+  "version": "1.0.0",
+  "description": "Perf test tool for startrail",
+  "main": "index.js",
+  "scripts": {
+    "test": "DEBUG=\"startrail:*,ipfs:stats:*\" node index.js",
+    "fmt": "prettier --write '**/*'",
+    "style": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/johnytiago/startrail-perf-test.git"
+  },
+  "author": "johnytiago",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnytiago/startrail-perf-test/issues"
+  },
+  "homepage": "https://github.com/johnytiago/startrail-perf-test#readme",
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run style",
+      "npm run fmt",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "dependencies": {
+    "async": "^3.1.0",
+    "fs-extra": "^8.1.0",
+    "ipfsd-ctl": "^0.42.2",
+    "percentile": "^1.2.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^7.5.0",
+    "eslint": "^5.13.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "husky": "^1.3.0",
+    "lint-staged": "^8.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.18.2"
+  }
+}
